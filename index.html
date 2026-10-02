@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Painel de despesas para registrar e acompanhar gastos por categoria." />
+    <title>Painel de despesas</title>
+  </head>
+  <body>
+    <div id="app" class="app-shell">
+      <aside class="sidebar" aria-label="Resumo financeiro">
+        <div class="brand-block">
+          <p class="eyebrow">Controle financeiro</p>
+          <h1>Painel de despesas</h1>
+        </div>
+
+        <div class="summary-card">
+          <p class="summary-label">Total geral</p>
+          <p id="total-geral" class="summary-total">R$ 0,00</p>
+        </div>
+
+        <ul class="category-summary" aria-label="Resumo por categoria">
+          <li class="summary-item">
+            <span>Alimentação</span>
+            <strong id="total-alimentacao" data-summary-value="alimentação">R$ 0,00</strong>
+          </li>
+          <li class="summary-item">
+            <span>Transporte</span>
+            <strong id="total-transporte" data-summary-value="transporte">R$ 0,00</strong>
+          </li>
+          <li class="summary-item">
+            <span>Saúde</span>
+            <strong id="total-saude" data-summary-value="saúde">R$ 0,00</strong>
+          </li>
+          <li class="summary-item">
+            <span>Lazer</span>
+            <strong id="total-lazer" data-summary-value="lazer">R$ 0,00</strong>
+          </li>
+          <li class="summary-item">
+            <span>Outros</span>
+            <strong id="total-outros" data-summary-value="outros">R$ 0,00</strong>
+          </li>
+        </ul>
+      </aside>
+
+      <main class="content" aria-label="Cadastro e listagem de despesas">
+        <section class="card form-card" aria-labelledby="nova-despesa-title">
+          <div class="section-heading">
+            <h2 id="nova-despesa-title">Nova despesa</h2>
+          </div>
+
+          <form id="expense-form" novalidate>
+            <div class="field-group">
+              <label for="titulo">Título</label>
+              <input id="titulo" name="titulo" type="text" placeholder="Ex.: Mercado" autocomplete="off" />
+              <p class="field-error" data-error-for="titulo" aria-live="polite"></p>
+            </div>
+
+            <div class="field-group">
+              <label for="valor">Valor</label>
+              <input id="valor" name="valor" type="number" min="0.01" step="0.01" inputmode="decimal" placeholder="0,00" />
+              <p class="field-error" data-error-for="valor" aria-live="polite"></p>
+            </div>
+
+            <div class="field-group">
+              <label for="categoria">Categoria</label>
+              <select id="categoria" name="categoria">
+                <option value="">Selecione</option>
+                <option value="alimentação">Alimentação</option>
+                <option value="transporte">Transporte</option>
+                <option value="saúde">Saúde</option>
+                <option value="lazer">Lazer</option>
+                <option value="outros">Outros</option>
+              </select>
+              <p class="field-error" data-error-for="categoria" aria-live="polite"></p>
+            </div>
+
+            <button type="submit" class="submit-button">Adicionar despesa</button>
+          </form>
+        </section>
+
+        <section class="card list-card" aria-labelledby="despesas-title">
+          <div class="section-heading list-heading">
+            <h2 id="despesas-title">Despesas</h2>
+          </div>
+
+          <div id="empty-state" class="empty-state" aria-live="polite">
+            Ainda não há despesas cadastradas.
+          </div>
+
+          <ul id="expense-list" class="expense-list" aria-live="polite"></ul>
+        </section>
+      </main>
+    </div>
+
+    <template id="expense-item-template">
+      <li class="expense-item">
+        <div class="expense-main">
+          <p class="expense-title"></p>
+          <span class="expense-category"></span>
+        </div>
+        <strong class="expense-value"></strong>
+      </li>
+    </template>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
