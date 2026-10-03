@@ -6,7 +6,7 @@ O projeto permite cadastrar despesas, classificá-las por categoria e acompanhar
 
 ## 🚀 Demonstração
 
-> **Executar localmente:** http://localhost:5173/
+> **Executar projeto :** (https://painel-de-despesas.vercel.app/)
 
 ⚠️ O endereço acima funciona quando o projeto está sendo executado localmente através do Vite. Para disponibilizar uma demonstração pública, o projeto precisa ser hospedado em um serviço como Vercel, Netlify ou GitHub Pages.
 
